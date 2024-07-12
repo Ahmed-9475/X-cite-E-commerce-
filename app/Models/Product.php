@@ -46,12 +46,19 @@ class Product extends Model
 
             return $this->belongsToMany(Tag::class,'pivot_product_tag');
         }
+        
+        public function cart()
+        {
+            return $this->belongsTo(Cart::class);
+        }
+    
 
         public function scopeActive(Builder $builder){
 
             return $builder->where('status','=','active');
         }
 
+        // make compare price with % 
         public function getPercentAttribute(){
 
             return  number_format($this->compare_price/$this->price*100,0); 
@@ -61,7 +68,7 @@ class Product extends Model
         public function getImageUrlAttribute(){
             // make default image
             if(!$this->image){
-                return "https://ortodontiadescomplicada.com.br/wp-content/uploads/2016/10/img-300x300.png";
+                return "https://avatarfiles.alphacoders.com/578/57843.jpg";
 
                 // check if inside database url image
             }else if(Str::startsWith($this->image, 'https://')){

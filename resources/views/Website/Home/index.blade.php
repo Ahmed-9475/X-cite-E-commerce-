@@ -223,6 +223,7 @@
                     @foreach($products as $product)
                     <div class="col-lg-3 col-md-6 col-12">
                         <!-- Start Single Product -->
+                        
                         <div class="single-product">
                             <div class="product-image">
                                 <img src="{{$product->image_url}}" alt="#">

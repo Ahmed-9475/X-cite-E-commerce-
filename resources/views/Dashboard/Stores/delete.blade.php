@@ -3,7 +3,7 @@
         <div class="modal fade" id="delete{{$store->id}}" tabindex="-1" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content" style="background-color:white">
-            <form action="{{route("Products.destroy",$store->id)}}" method="post">
+            <form action="{{route("dashboard.admin.Products.destroy",$store->id)}}" method="post">
               @method("delete")
               @csrf
             <div class="modal-header">

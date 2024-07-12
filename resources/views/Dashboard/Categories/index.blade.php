@@ -12,7 +12,7 @@ Dashboard
             <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Categroy /</span> All</h4>        
         </div>
         <div class="col-6 d-flex justify-content-end">
-            <a class="btn btn-primary" href="{{route('Categories.create')}}">Add Categroy</a>
+            <a class="btn btn-primary" href="{{route('admin.Categories.create')}}">Add Categroy</a>
         </div>
 
     </div>
@@ -57,7 +57,7 @@ Dashboard
                     @foreach($categories as $category)
                         <tr>
                             <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{$category->id}}</strong></td>
-                            <td><a href="{{route('Categories.show',$category->id)}}">{{$category->name}}</a></td>
+                            <td><a href="{{route('admin.Categories.show',$category->id)}}">{{$category->name}}</a></td>
                             <td>{{$category->description}}</td>
                             <td>testing</td>
                             <td>
@@ -83,7 +83,7 @@ Dashboard
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{route('Categories.edit',$category->id)}}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                    <a class="dropdown-item" href="{{route('admin.Categories.edit',$category->id)}}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
                                     <a class="dropdown-item modal-effect" data-effect="effect-scale" data-bs-toggle="modal"  href="#delete{{$category->id}}"><i class="bx bx-trash me-1"></i> Delete</a>
                                 </div>
                                 </div>

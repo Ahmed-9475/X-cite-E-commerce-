@@ -16,7 +16,7 @@ Dashboard
     <section >
         <div class="row m-0">
             <div style="" class="col-12 mt-4">
-                <form enctype="multipart/form-data" action="{{route('Products.store')}}" method="post">
+                <form enctype="multipart/form-data" action="{{route('dashboard.admin.Products.store')}}" method="post">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">Product Name</label>

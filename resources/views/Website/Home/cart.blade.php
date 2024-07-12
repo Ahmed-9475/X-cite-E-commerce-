@@ -55,15 +55,17 @@ x-cite
                     </div>
                 </div>
                 <!-- End Cart List Title -->
+                @foreach($cartDetails as $cartItem)
                 <!-- Cart Single List list -->
-                <div class="cart-single-list">
+                <div class="cart-single-list product_data"  id="product_data{{$cartItem->Product->id}}">
                     <div class="row align-items-center">
                         <div class="col-lg-1 col-md-1 col-12">
                             <a href="product-details.html"><img src="https://via.placeholder.com/220x200" alt="#"></a>
                         </div>
-                        <div class="col-lg-4 col-md-3 col-12">
-                            <h5 class="product-name"><a href="product-details.html">
-                                    Canon EOS M50 Mirrorless Camera</a></h5>
+                        <div class="col-lg-4 col-md-3 col-12  ">
+                            <input class="Product_id" type="hidden" value="{{$cartItem->Product->id}}">
+                            <h5 class="product-name"><a href="#">
+                                    {{$cartItem->Product->name}}</a></h5>
                             <p class="product-des">
                                 <span><em>Type:</em> Mirrorless</span>
                                 <span><em>Color:</em> Black</span>
@@ -71,20 +73,20 @@ x-cite
                         </div>
                         <div class="col-lg-2 col-md-2 col-12">
                             <div class="count-input">
-                                <select class="form-control">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
+                                <select id="productQuantity{{$cartItem->Product->id}}" class="form-control productQuantity">
+                                    <option value="1"@selected($cartItem->quantity ==1)>1</option>
+                                    <option value="2" @selected($cartItem->quantity==2)>2</option>
+                                    <option value="3" @selected($cartItem->quantity==3)>3</option>
+                                    <option value="4" @selected($cartItem->quantity==4)>4</option>
+                                    <option value="5" @selected($cartItem->quantity==5)>5</option>
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                            <p>$910.00</p>
+                        <div class="col-lg-2 col-md-2 col-12 ">
+                            <p class="productPrice{{$cartItem->Product->id}}">${{$cartItem->Product->price}}</p>
                         </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                            <p>$29.00</p>
+                        <div class="col-lg-2 col-md-2 col-12 ">
+                            <p id="" class="comparePrice{{$cartItem->Product->id}}">${{$cartItem->Product->compare_price}}</p>
                         </div>
                         <div class="col-lg-1 col-md-2 col-12">
                             <a class="remove-item" href="javascript:void(0)"><i class="lni lni-close"></i></a>
@@ -92,79 +94,8 @@ x-cite
                     </div>
                 </div>
                 <!-- End Single List list -->
-                <!-- Cart Single List list -->
-                <div class="cart-single-list">
-                    <div class="row align-items-center">
-                        <div class="col-lg-1 col-md-1 col-12">
-                            <a href="product-details.html"><img src="https://via.placeholder.com/220x200" alt="#"></a>
-                        </div>
-                        <div class="col-lg-4 col-md-3 col-12">
-                            <h5 class="product-name"><a href="product-details.html">
-                                    Apple iPhone X 256 GB Space Gray</a></h5>
-                            <p class="product-des">
-                                <span><em>Memory:</em> 256 GB</span>
-                                <span><em>Color:</em> Space Gray</span>
-                            </p>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                            <div class="count-input">
-                                <select class="form-control">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                            <p>$1100.00</p>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                            <p>—</p>
-                        </div>
-                        <div class="col-lg-1 col-md-2 col-12">
-                            <a class="remove-item" href="javascript:void(0)"><i class="lni lni-close"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single List list -->
-                <!-- Cart Single List list -->
-                <div class="cart-single-list">
-                    <div class="row align-items-center">
-                        <div class="col-lg-1 col-md-1 col-12">
-                            <a href="product-details.html"><img src="https://via.placeholder.com/220x200" alt="#"></a>
-                        </div>
-                        <div class="col-lg-4 col-md-3 col-12">
-                            <h5 class="product-name"><a href="product-details.html">HP LaserJet Pro Laser Printer</a></h5>
-                            <p class="product-des">
-                                <span><em>Type:</em> Laser</span>
-                                <span><em>Color:</em> White</span>
-                            </p>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                            <div class="count-input">
-                                <select class="form-control">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                            <p>$550.00</p>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-12">
-                            <p>—</p>
-                        </div>
-                        <div class="col-lg-1 col-md-2 col-12">
-                            <a class="remove-item" href="javascript:void(0)"><i class="lni lni-close"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single List list -->
+                @endforeach
+
             </div>
             <div class="row">
                 <div class="col-12">
@@ -192,7 +123,7 @@ x-cite
                                         <li class="last">You Pay<span>$2531.00</span></li>
                                     </ul>
                                     <div class="button">
-                                        <a href="checkout.html" class="btn">Checkout</a>
+                                        <a href="{{route('Checkout')}}" class="btn">Checkout</a>
                                         <a href="product-grids.html" class="btn btn-alt">Continue shopping</a>
                                     </div>
                                 </div>
@@ -204,4 +135,71 @@ x-cite
             </div>
         </div>
     </div>
-    <!--/ End Shopping Cart -->@endsection
+    <!--/ End Shopping Cart -->
+@endsection
+
+
+@section('scripts')
+
+<script>
+
+$(document).ready(function(){
+
+    // update product to shopping cart
+    $('.productQuantity').change(function(event){
+        event.preventDefault(); 
+        var product_id = $(this).closest('.product_data').find('.Product_id').val();
+        var quantity = $(this).val();
+
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }});
+                // AJAX update product request
+        $.ajax({
+            url: "{{ route('cart.update') }}",
+            method: 'post',
+            data: {
+                'product_id': product_id,
+                'productQuantity': quantity
+                
+            },
+            success: function(response) {
+
+                
+                if(response.productId === product_id){
+                    $('.productPrice'+product_id).html(response.newPrice)
+                    $('.comparePrice'+product_id).text(response.discount)
+
+                    Cookies.set('newPriceCookie'+ product_id, response.newPriceCookie)
+
+                }
+                
+            },
+            error: function(xhr, status, error) {
+                console.error('Error details:', xhr.responseText);
+                alert('Failed to update product to cart.');
+            }
+        });
+
+    })
+
+        // fetch data with cookie when page relode 
+
+        // $('.product_data').each(function(){
+        //     //event.preventDefault();
+        // var product_id = $(this).closest('.product_data').find('.Product_id').val();
+        // var productPriceCookie = Cookies.get('newPriceCookie');
+        // // var productPriceStored = localStorage.getItem("newPrice" + product_id);
+        //     //productPrice42 // newPriceCookie42
+        // $('.productPrice'+product_id).text(productPriceCookie)
+        // console.log(product_id)
+        
+        // })
+
+})
+
+</script>
+@endsection
+

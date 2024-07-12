@@ -41,6 +41,7 @@
 
     <!-- ========================= include scripts ========================= -->
             @include('Website.Layouts.script')
+            @yield('scripts')
 </body>
 
 </html>

@@ -23,6 +23,6 @@ class Store extends Model
     // relation with products
 
     public function products(){
-        return $this->hasMany(Product::class,'store_id');
+        return $this->hasMany(Product::class,'product_id');
     }
 }

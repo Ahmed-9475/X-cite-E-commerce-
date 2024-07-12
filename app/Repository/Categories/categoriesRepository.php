@@ -58,7 +58,7 @@ class  categoriesRepository implements categoriesRepositoryInterface
 
             DB::commit();
             session()->flash('add');
-            return redirect()->route('Categories.index');
+            return redirect()->route('admin.Categories.index');
         }catch(\Exception $e){
 
             DB::rollBack();
@@ -117,7 +117,7 @@ class  categoriesRepository implements categoriesRepositoryInterface
             
             DB::commit();
             session()->flash('edit');
-            return redirect()->route('Categories.index');
+            return redirect()->route('admin.Categories.index');
         }catch(\Exception $e){
 
             DB::rollBack();
@@ -132,7 +132,7 @@ class  categoriesRepository implements categoriesRepositoryInterface
     {
         Category::destroy($id);
         session()->flash('delete');
-        return redirect()->route('Categories.index');
+        return redirect()->route('admin.Categories.index');
 
     }
 

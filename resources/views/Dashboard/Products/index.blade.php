@@ -12,7 +12,7 @@ Dashboard
             <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Product /</span> All</h4>        
         </div>
         <div class="col-6 d-flex justify-content-end">
-            <a class="btn btn-primary" href="{{route('Products.create')}}">Add Product</a>
+            <a class="btn btn-primary" href="{{route('dashboard.admin.Products.create')}}">Add Product</a>
         </div>
 
     </div>
@@ -70,7 +70,7 @@ Dashboard
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{route('Products.edit',$Product->id)}}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                    <a class="dropdown-item" href="{{route('dashboard.admin.Products.edit',$Product->id)}}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
                                     <a class="dropdown-item modal-effect" data-effect="effect-scale" data-bs-toggle="modal"  href="#delete{{$Product->id}}"><i class="bx bx-trash me-1"></i> Delete</a>
                                 </div>
                                 </div>

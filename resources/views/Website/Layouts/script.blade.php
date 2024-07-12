@@ -1,8 +1,11 @@
     <!-- ========================= JS here ========================= -->
+    <script src="{{asset('Web/assets/js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{asset('Web/assets/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('Web/assets/js/tiny-slider.js')}}"></script>
     <script src="{{asset('Web/assets/js/glightbox.min.js')}}"></script>
     <script src="{{asset('Web/assets/js/main.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
+
     <script type="text/javascript">
         //========= Hero Slider 
         tns({
@@ -75,3 +78,4 @@
         timer();
         setInterval(timer, 1000);
     </script>
+    

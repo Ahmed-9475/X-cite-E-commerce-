@@ -45,18 +45,41 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-12">
                     <div class="top-end">
+                        @auth
+                        
                         <div class="user">
                             <i class="lni lni-user"></i>
-                            Hello
+                            {{auth()->user()->name}}
                         </div>
-                        <ul class="user-login">
+                        <ul class="user-login"> 
                             <li>
-                                <a href="login.html">Sign In</a>
-                            </li>
-                            <li>
-                                <a href="register.html">Register</a>
+                                {{-- <form action="{{route('logout')}}" method="post" >
+                                    @method('POST')
+                                    @csrf
+                                    <a href="{{route('logout')}}"><i class="bx bx-power-off me-2"></i>logout</a>
+                                </form> --}}
+
+                                <a href="{{route('logoutUser')}}" onclick="event.preventDefault();document.getElementById('logoutUser').submit()">
+                                <i class="bx bx-power-off me-2"></i>
+                                <span class="align-middle">Log Out</span></a>
+                                <form id="logoutUser" action="{{route('logoutUser')}}" style="display: none;" method="POST">@csrf</form>   
                             </li>
                         </ul>
+                        {{-- <form  action="{{route('logout')}}" method="post">
+                            @csrf
+                            <button class="form-control btn-danger" type="submit"> <i class="bx bx-power-off me-2"></i>Log Out</button>
+                        </form> --}}
+
+                        @else
+                        <ul class="user-login">
+                            <li>
+                                <a href="{{route('login.user')}}">Sign In</a>
+                            </li>
+                            <li>
+                                <a href="{{route('register.user')}}">Register</a>
+                            </li>
+                        </ul>
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -126,7 +149,7 @@
                                 <div class="shopping-item">
                                     <div class="dropdown-cart-header">
                                         <span>2 Items</span>
-                                        <a href="cart.html">View Cart</a>
+                                        <a href="{{route("cart.index")}}">View Cart</a>
                                     </div>
                                     <ul class="shopping-list">
                                         <li>
@@ -162,7 +185,8 @@
                                             <span class="total-amount">$134.00</span>
                                         </div>
                                         <div class="button">
-                                            <a href="checkout.html" class="btn animate">Checkout</a>
+                                            <a href="{{route("cart.index")}}"  class="btn animate">View Cart</a>
+
                                         </div>
                                     </div>
                                 </div>

@@ -17,7 +17,7 @@ Dashboard
     <section >
         <div class="row m-0">
             <div style="" class="col-12 mt-4">
-                <form enctype="multipart/form-data" action="{{route('Categories.update', $categories->id)}}" method="post">
+                <form enctype="multipart/form-data" action="{{route('admin.Categories.update', $categories->id)}}" method="post">
                     @method('PUT')
                     @csrf
                     <div class="mb-3">

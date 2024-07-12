@@ -90,7 +90,7 @@ class  ProductsRepository implements ProductsRepositoryInterface
 
             DB::commit();
             session()->flash('add');
-            return redirect()->route('Products.index');
+            return redirect()->route('dashboard.admin.Products.index');
         }catch(\Exception $e){
 
             DB::rollBack();
@@ -106,7 +106,6 @@ class  ProductsRepository implements ProductsRepositoryInterface
      */
     public function show(string $id)
     {
-        //
     }
 
     /**
@@ -158,7 +157,7 @@ class  ProductsRepository implements ProductsRepositoryInterface
 
             DB::commit();
             session()->flash('edit');
-            return redirect()->route('Products.index');
+            return redirect()->route('dashboard.admin.Products.index');
         }catch(\Exception $e){
 
             DB::rollBack();
@@ -170,11 +169,12 @@ class  ProductsRepository implements ProductsRepositoryInterface
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy( $id)
+    public function destroy($id)
     {
-        Product::destroy($id);
+        $product = Product::findOrFail($id);
+        $product->delete();
         session()->flash('delete');
-        return redirect()->route('Products.index');
+        return redirect()->route('dashboard.admin.Products.index');
 
     }
 

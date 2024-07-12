@@ -8,14 +8,13 @@ use Illuminate\Http\Request;
 
 class ProductWebController extends Controller
 {
-    public function index(){
-
-       // return view('Website.Home.product-details');
-    }
 
 
-    public function show(Product $product){
+    public function show($slug){
 
+        $product = Product::with(['category'=>function($query){$query->select('id', 'name');}])
+        ->where('slug', $slug)->firstOrFail();
+        
 
         return view('Website.Home.product-details',compact('product'));
     }

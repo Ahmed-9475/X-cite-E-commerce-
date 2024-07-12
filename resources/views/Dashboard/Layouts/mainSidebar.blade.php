@@ -24,13 +24,13 @@
                     </a>
                     <ul class="menu-sub">
                     <li class="menu-item">
-                        <a href="{{route('Categories.index')}}" class="menu-link">
+                        <a href="{{route('admin.Categories.index')}}" class="menu-link">
                         <div data-i18n="Account">Categories</div>
                         </a>
                     </li>
     
                     <li class="menu-item">
-                        <a href="{{route('Products.index')}}" class="menu-link">
+                        <a href="{{route('admin.Products.index')}}" class="menu-link">
                         <div data-i18n="Account">Products</div>
                         </a>
                     </li>
@@ -48,7 +48,7 @@
                     </a>
                     <ul class="menu-sub">
                     <li class="menu-item">
-                        <a href="{{route('Stores.index')}}" class="menu-link">
+                        <a href="{{route('admin.Stores.index')}}" class="menu-link">
                         <div data-i18n="Account">Store</div>
                         </a>
                     </li>

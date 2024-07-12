@@ -19,7 +19,7 @@ Dashboard
     <section >
         <div class="row m-0">
             <div style="" class="col-12 mt-4">
-                <form enctype="multipart/form-data" action="{{route('Products.update',$Products->id)}}" method="POST">
+                <form enctype="multipart/form-data" action="{{route('dashboard.admin.Products.update',$Products->id)}}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="mb-3">

@@ -41,7 +41,7 @@
                                     </div>
                                     </div>
                                     <div class="flex-grow-1">
-                                    <span class="fw-semibold d-block">John Doe</span>
+                                    <span class="fw-semibold d-block"></span>
                                     <small class="text-muted">Admin</small>
                                     </div>
                                 </div>
@@ -75,10 +75,14 @@
                                 <div class="dropdown-divider"></div>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="auth-login-basic.html">
+                                {{-- <a onclick="event.preventDefault;document.getElementById('logout').submit()"  class="dropdown-item"href="{{route('logout')}}">
                                 <i class="bx bx-power-off me-2"></i>
-                                <span class="align-middle">Log Out</span>
-                                </a>
+                                <span class="align-middle">Log Out</span></a> --}}
+
+                                <form  action="{{route('logout')}}" method="post">
+                                    @csrf
+                                    <button class="form-control btn-danger" type="submit"> <i class="bx bx-power-off me-2"></i>Log Out</button>
+                                </form>
                             </li>
                             </ul>
                         </li>

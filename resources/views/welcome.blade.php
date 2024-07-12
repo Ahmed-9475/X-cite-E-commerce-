@@ -664,7 +664,7 @@
     </section>
     <!-- End Special Offer -->
 
-    <!-- Start Home Product List -->
+    <!-- Start Dashboard Product List -->
     <section class="home-product-list section">
         <div class="container">
             <div class="row">
@@ -797,7 +797,7 @@
             </div>
         </div>
     </section>
-    <!-- End Home Product List -->
+    <!-- End Dashboard Product List -->
 
     <!-- Start Brands Area -->
     <div class="brands">

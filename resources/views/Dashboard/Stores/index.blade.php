@@ -12,7 +12,7 @@ Dashboard
             <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Store /</span> All</h4>        
         </div>
         <div class="col-6 d-flex justify-content-end">
-            <a class="btn btn-primary" href="{{route('Stores.create')}}">Add Store</a>
+            <a class="btn btn-primary" href="{{route('dashboard.admin.Stores.create')}}">Add Store</a>
         </div>
 
     </div>
@@ -63,7 +63,7 @@ Dashboard
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{route('Stores.edit',$store->id)}}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                    <a class="dropdown-item" href="{{route('dashboard.admin.Stores.edit',$store->id)}}"><i class="bx bx-edit-alt me-1"></i> Edit</a>
                                     <a class="dropdown-item modal-effect" data-effect="effect-scale" data-bs-toggle="modal"  href="#delete{{$store->id}}"><i class="bx bx-trash me-1"></i> Delete</a>
                                 </div>
                                 </div>

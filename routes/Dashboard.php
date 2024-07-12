@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\StoreController;
 use App\Http\Controllers\Dashboard\ProductController;
 use App\Http\Controllers\Dashboard\CategoryController;
+use App\Http\Controllers\Dashboard\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,10 +17,17 @@ use App\Http\Controllers\Dashboard\CategoryController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('Dashboard.Admin.index');
-// });
 
-Route::resource('Categories',CategoryController::class);
-Route::resource('Products',ProductController::class);
-Route::resource('Stores',StoreController::class);
+Route::get('dashboard/admin',[DashboardController::class,'index'])->name('dashboardAdmin')->middleware('Admin');
+
+Route::middleware('Admin')->prefix('dashboard/admin')->name('admin.')->group(function(){
+    
+        Route::resource('Categories',CategoryController::class);
+        Route::resource('Products',ProductController::class);
+        Route::resource('Stores',StoreController::class);
+
+
+        
+});
+    require __DIR__.'/authDashboard.php';
+    

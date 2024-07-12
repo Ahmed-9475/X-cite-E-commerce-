@@ -29,7 +29,7 @@ x-cite
 
     <!-- Start Item Details -->
     <section class="item-details section">
-        <div class="container">
+        <div class="container product_data">
             <div class="top-area">
                 <div class="row align-items-center">
                     <div class="col-lg-6 col-md-12 col-12">
@@ -50,13 +50,11 @@ x-cite
                     </div>
                     <div class="col-lg-6 col-md-12 col-12">
                         <div class="product-info">
-                            <h2 class="title">GoPro Karma Camera Drone</h2>
-                            <p class="category"><i class="lni lni-tag"></i> Drones:<a href="javascript:void(0)">Action
-                                    cameras</a></p>
-                            <h3 class="price">$850<span>$945</span></h3>
-                            <p class="info-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor incididunt
-                                ut labore et dolore magna aliqua.</p>
+                            <input type="hidden"class='product_id' value="{{$product->id}}" >
+                            <h2 class="title">{{$product->name}}</h2>
+                            <p class="category"><i class="lni lni-tag"></i> {{$product->category->name}}</p>
+                            <h3 class="price">${{$product->price}}<span>${{$product->compare_price}}</span></h3>
+                            <p class="info-text">{{$product->description}}</p>
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-12">
                                     <div class="form-group color-option">
@@ -92,12 +90,12 @@ x-cite
                                 <div class="col-lg-4 col-md-4 col-12">
                                     <div class="form-group quantity">
                                         <label for="color">Quantity</label>
-                                        <select class="form-control">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
+                                        <select class="form-control prodcutQuantity">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
                                         </select>
                                     </div>
                                 </div>
@@ -106,7 +104,10 @@ x-cite
                                 <div class="row align-items-end">
                                     <div class="col-lg-4 col-md-4 col-12">
                                         <div class="button cart-button">
-                                            <button class="btn" style="width: 100%;">Add to Cart</button>
+                                            <form action="{{ route('cart.store', $product->id) }}" method="POST">
+                                                @csrf
+                                                <button type="button" class="btn addCartBtn" style="padding: 10px;">Add to Cart</button>
+                                            </form>
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-4 col-12">
@@ -348,4 +349,46 @@ x-cite
         </div>
     </div>
     <!-- End Review Modal -->
+@endsection
+
+@section('scripts')
+
+    <script>
+
+    $(document).ready(function(){
+
+        // Add product to shopping cart
+        $('.addCartBtn').click(function(e){
+            e.preventDefault();       
+            var product_id = $(this).closest('.product_data').find('.product_id').val();
+            var quantity = $(this).closest('.product_data').find('.prodcutQuantity').val();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }});
+                    // AJAX add product request
+            $.ajax({
+                url: "{{ route('cart.store') }}",
+                method: 'post',
+                data: {
+                    'product_id': product_id,
+                    'prodcutQuantity': quantity
+                    
+                },
+                success: function(response) {
+
+                    swal(response.status)
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error adding product to cart:', error);
+                    alert('Failed to add product to cart.');
+                }
+            });
+
+
+
+        })
+    })
+
+    </script>
 @endsection
