@@ -15,7 +15,7 @@ class CheckoutWebController extends Controller
 
     public function __construct(checkoutRepositoryInterface $checkout,cartsRepositoryInterface $cartRepository ){
 
-        $this->CheckOrder   = $checkout; 
+        $this->CheckOrder     = $checkout; 
         $this->cartRepository = $cartRepository;
     }
 

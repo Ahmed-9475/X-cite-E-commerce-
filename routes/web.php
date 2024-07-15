@@ -37,6 +37,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/products/{product:slug}', [ProductWebController::class, 'show'])->name('products.show');
 Route::resource('cart',CartWebController::class);
 Route::post('cart/update',[CartWebController::class,'update'])->name('cart.update');
-Route::get('Checkout',[CheckoutWebController::class,'index'])->name('Checkout');
+Route::middleware('auth:web')->get('Checkout',[CheckoutWebController::class,'index'])->name('Checkout');
 Route::post('Checkout',[CheckoutWebController::class,'store']);
 require __DIR__.'/auth.php';

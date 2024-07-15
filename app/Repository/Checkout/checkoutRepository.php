@@ -18,7 +18,7 @@ class checkoutRepository implements checkoutRepositoryInterface{
 
 
         if(count( $cart->getCartData()) == 0){
-            return redirect()->route('home');
+            return redirect()->route('/');
         }
         
         return view('Website.Home.checkout',compact('cart'));
@@ -35,7 +35,7 @@ class checkoutRepository implements checkoutRepositoryInterface{
 
             foreach($cartData as $store_id => $cart_items){
                 $order = Order::create([
-                    'user_id'=> null,
+                    'user_id'=> auth()->user()->id,
                     'store_id'=>$store_id,
                 ]);
 
@@ -57,9 +57,11 @@ class checkoutRepository implements checkoutRepositoryInterface{
 
             }
 
-            $cart->empty();
+            //$cart->empty();
+            // make events to empty cart and decrement products quantity
             
             DB::commit();
+            event('order.created',$order);
             return redirect()->route('home');
         }catch(\Exception $e){
 

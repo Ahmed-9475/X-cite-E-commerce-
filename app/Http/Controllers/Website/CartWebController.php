@@ -46,11 +46,6 @@ class CartWebController extends Controller
      */
     public function update(Request $request)
     {
-        // $request->validate([
-        //     'product_id'=>['int','required','exists:products,id'],
-        //     'quantity'=>['int','nullable','min:1'],
-        // ]);
-
         return $this->Cart->update($request);
     }
 
@@ -61,4 +56,10 @@ class CartWebController extends Controller
     {
         return $this->Cart->delete($id);
     }
+
+    public function empty()
+    {
+        return $this->Cart->empty();
+    }
+
 }

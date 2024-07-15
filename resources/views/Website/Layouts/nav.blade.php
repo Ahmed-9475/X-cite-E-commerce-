@@ -53,11 +53,6 @@
                         </div>
                         <ul class="user-login"> 
                             <li>
-                                {{-- <form action="{{route('logout')}}" method="post" >
-                                    @method('POST')
-                                    @csrf
-                                    <a href="{{route('logout')}}"><i class="bx bx-power-off me-2"></i>logout</a>
-                                </form> --}}
 
                                 <a href="{{route('logoutUser')}}" onclick="event.preventDefault();document.getElementById('logoutUser').submit()">
                                 <i class="bx bx-power-off me-2"></i>
@@ -148,36 +143,25 @@
                                 <!-- Shopping Item -->
                                 <div class="shopping-item">
                                     <div class="dropdown-cart-header">
-                                        <span>2 Items</span>
+                                        <span</span>
                                         <a href="{{route("cart.index")}}">View Cart</a>
                                     </div>
                                     <ul class="shopping-list">
+                                        {{-- @foreach($cartDetails as $cart) --}}
                                         <li>
                                             <a href="javascript:void(0)" class="remove" title="Remove this item"><i
                                                     class="lni lni-close"></i></a>
                                             <div class="cart-img-head">
                                                 <a class="cart-img" href="product-details.html">
-                                                    <img src="{{asset('Web/assets/images/header/cart-items/item1.jpg')}}" alt="#"></a>
+                                                    {{-- <img src="{{$cart->Product->image_url}}" alt="#"></a> --}}
                                             </div>
 
                                             <div class="content">
-                                                <h4><a href="product-details.html">
-                                                        Apple Watch Series 6</a></h4>
-                                                <p class="quantity">1x - <span class="amount">$99.00</span></p>
+                                                {{-- <h4><a href="product-details.html">{{$cart->Product->name}}</a></h4>
+                                                <p class="quantity"> {{$cart->quantity}} - <span class="amount">{{$cart->Product->price}}</span></p> --}}
                                             </div>
                                         </li>
-                                        <li>
-                                            <a href="javascript:void(0)" class="remove" title="Remove this item"><i
-                                                    class="lni lni-close"></i></a>
-                                            <div class="cart-img-head">
-                                                <a class="cart-img" href="product-details.html">
-                                                <img src="{{asset('Web/assets/images/header/cart-items/item2.jpg')}}" alt="#"></a>
-                                            </div>
-                                            <div class="content">
-                                                <h4><a href="product-details.html">Wi-Fi Smart Camera</a></h4>
-                                                <p class="quantity">1x - <span class="amount">$35.00</span></p>
-                                            </div>
-                                        </li>
+                                        {{-- @endforeach --}}
                                     </ul>
                                     <div class="bottom">
                                         <div class="total">

@@ -2,19 +2,23 @@
 
 namespace App\Http\Controllers\Website;
 
-use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Interface\Carts\cartsRepositoryInterface;
 
 class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(cartsRepositoryInterface $cart)
     {
+
+        $cartDetails = $cart->getCartData()->all();
         $products = Product::with('category')->take(8)->active()->latest()->get();
-        return view('Website.Home.index',compact('products'));
+        return view('Website.Home.index',compact(['products','cartDetails']));
     }
 
     /**

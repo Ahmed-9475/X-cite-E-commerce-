@@ -228,9 +228,16 @@
                             <div class="product-image">
                                 <img src="{{$product->image_url}}" alt="#">
                                 <span class="sale-tag">{{$product->percent}}%</span>
+                                {{-- <form action="{{ route('cart.store', $product->id) }}" method="POST">
+                                    @csrf
+                                    <button type="button" class="btn addCartBtn" style="padding: 10px;">Add to Cart</button>
+                                </form> --}}
+                                <form action="{{ route('cart.store', $product->id) }}" method="POST">
+                                    @csrf
                                 <div class="button">
-                                    <a href="product-details.html" class="btn"><i class="lni lni-cart"></i> Add to Cart</a>
+                                    <a href="product-details.html" class="btn addCartBtn"><i class="lni lni-cart"></i> Add to Cart</a>
                                 </div>
+                            </form>
                             </div>
                             <div class="product-info">
                                 <span class="category">{{$product->category->name}}</span>
@@ -776,3 +783,46 @@
         <!-- End Shipping Info -->
 
     @endsection
+
+
+    @section('scripts')
+
+    <script>
+
+    $(document).ready(function(){
+
+        // Add product to shopping cart
+        $('.addCartBtn').click(function(e){
+            e.preventDefault();       
+            var product_id = $(this).closest('.product_data').find('.product_id').val();
+            var quantity = $(this).closest('.product_data').find('.prodcutQuantity').val();
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }});
+                    // AJAX add product request
+            $.ajax({
+                url: "{{ route('cart.store') }}",
+                method: 'post',
+                data: {
+                    'product_id': product_id,
+                    'prodcutQuantity': quantity
+                    
+                },
+                success: function(response) {
+
+                    //swal(response.status)
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error adding product to cart:', error);
+                    alert('Failed to add product to cart.');
+                }
+            });
+
+
+
+        })
+    })
+
+    </script>
+@endsection

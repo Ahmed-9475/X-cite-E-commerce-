@@ -377,7 +377,7 @@ x-cite
                 },
                 success: function(response) {
 
-                    swal(response.status)
+                    
                 },
                 error: function(xhr, status, error) {
                     console.error('Error adding product to cart:', error);
@@ -388,6 +388,8 @@ x-cite
 
 
         })
+
+        
     })
 
     </script>

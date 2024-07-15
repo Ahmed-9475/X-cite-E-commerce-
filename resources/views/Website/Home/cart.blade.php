@@ -166,12 +166,11 @@ $(document).ready(function(){
                 
             },
             success: function(response) {
-
                 
                 if(response.productId === product_id){
                     $('.productPrice'+product_id).html(response.newPrice)
                     $('.comparePrice'+product_id).text(response.discount)
-
+                    
                     Cookies.set('newPriceCookie'+ product_id, response.newPriceCookie)
 
                 }
@@ -182,7 +181,7 @@ $(document).ready(function(){
                 alert('Failed to update product to cart.');
             }
         });
-
+        
     })
 
         // fetch data with cookie when page relode 
